@@ -14,22 +14,13 @@ python-zeroconf
 
 ---------- FOREWORD -----------
 
-This is a fork of jstasiak/python-zeroconf and being tested/fixed to work
-with Dante mDNS discovery.  The PyPI project (currently 0.24.3) currently has 
-the following major issues that create instability for any application that
-is uses zeroconf for discovery and removal of a service that has state:
+This is a fork of jstasiak/python-zeroconf and being tested/fixed to work with Dante mDNS discovery.  The PyPI project (currently 0.24.3) currently has the following major issues that create instability for any application that is uses zeroconf for discovery and removal of a service that has state:
 
-- It does not update TTL correctly for cached records, resulting in every
-ptr expiring (remove callback) and then being re-added.  There are 2 PR's
-in for this, neither have been accepted yet.
+- It does not update TTL correctly for cached records, resulting in every ptr expiring (remove callback) and then being re-added.  There are 2 PR's in for this, neither have been accepted yet.
 
-- ServiceBrowser backoff to 1 hour (3600 sec) on discovery is not ttl aware
-and, in a stable network, will allow ptr's to go well past stale/expiry until
-an event that forces a query. (not fixed)
+- ServiceBrowser backoff to 1 hour (3600 sec) on discovery is not ttl aware and, in a stable network, will allow ptr's to go well past stale/expiry until an event that forces a query. (not fixed)
 
-- Related to the ServiceBrowser issue, if a new ptr is discovered that has
-a long TTL, then the query calculation is reset to 75% of the new record and
-completely ignores any with a shorter TTL. (not fixed)
+- Related to the ServiceBrowser issue, if a new ptr is discovered that has a long TTL, then the query calculation is reset to 75% of the new record and completely ignores any with a shorter TTL. (not fixed)
 
 -------------------------------
       
